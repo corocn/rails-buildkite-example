@@ -1,0 +1,30 @@
+version: '3.2'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+    links:
+      - mysql
+    volumes:
+      - "./tmp:/app/tmp"
+    environment:
+      MYSQL_HOSTNAME: mysql
+      # CI envs
+      CI:
+      RAILS_ENV:
+      # CI envs For Knapsack
+      BUILDKITE_PARALLEL_JOB:
+      BUILDKITE_PARALLEL_JOB_COUNT:
+      BUILDKITE_COMMIT:
+      BUILDKITE_BRANCH:
+      BUILDKITE_REPO:
+      BUILDKITE_BUILD_ID:
+      BUILDKITE_BUILD_NUMBER:
+    ports:
+      - "5000:5000"
+    entrypoint: wait-for-it.sh mysql:3306 -s --
+  mysql:
+    image: mysql:5.7.17
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
