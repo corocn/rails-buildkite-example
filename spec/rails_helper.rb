@@ -8,6 +8,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
 require 'selenium-webdriver'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -62,21 +63,28 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  Capybara.register_driver :chrome do |app|
-    Capybara::Selenium::Driver.new(app, browser: :chrome)
-  end
-
   Capybara.register_driver :headless_chrome do |app|
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-      chromeOptions: { args: %w[headless disable-gpu] }
-    )
+    options = Selenium::WebDriver::Chrome::Options.new
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome(loggingPrefs: { browser: 'ALL' })
+    options.add_argument('no-sandbox')
+    options.add_argument('headless')
+    options.add_argument('disable-gpu')
+    options.add_argument('lang=ja-JP')
 
     Capybara::Selenium::Driver.new(
       app,
       browser: :chrome,
-      desired_capabilities: capabilities
+      options: options,
+      desired_capabilities: caps
     )
   end
 
+  Capybara.default_driver = :headless_chrome
   Capybara.javascript_driver = :headless_chrome
+
+
+  Capybara::Screenshot.register_driver(:headless_chrome) do |driver, path|
+    driver.browser.save_screenshot(path)
+  end
+  Capybara::Screenshot.prune_strategy = :keep_last_run
 end
