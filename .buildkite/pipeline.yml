@@ -2,6 +2,7 @@
   command: "sh scripts/ci/parallel_specs.sh"
   artifact_paths:
   - "log/**/*"
+  - "tmp/capybara/**/*"
   env:
     RAILS_ENV: test
   plugins:
