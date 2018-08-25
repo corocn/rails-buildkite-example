@@ -8,7 +8,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'capybara/rspec'
-require 'capybara-screenshot/rspec'
+require 'capybara-inline-screenshot/rspec'
 require 'selenium-webdriver'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

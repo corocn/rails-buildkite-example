@@ -59,6 +59,8 @@ GEM
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.1)
+    capybara-inline-screenshot (2.2.0)
+      capybara-screenshot
     capybara-screenshot (1.0.21)
       capybara (>= 1.0, < 4)
       launchy
@@ -226,7 +228,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
-  capybara-screenshot
+  capybara-inline-screenshot
   chromedriver-helper
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
