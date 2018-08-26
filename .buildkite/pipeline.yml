@@ -26,7 +26,7 @@ steps:
       queue: $BUILDKITE_AGENT_META_DATA_QUEUE
 
   - name: ":rspec:"
-    command: "scripts/ci/parallel_specs.sh"
+    command: "scripts/ci/rspec.sh"
     artifact_paths:
      - "log/**/*"
      - "tmp/capybara/**/*"
