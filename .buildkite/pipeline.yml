@@ -1,14 +1,30 @@
-- name: ":rspec:"
-  command: "sh scripts/ci/parallel_specs.sh"
-  artifact_paths:
-  - "log/**/*"
-  - "tmp/capybara/**/*"
-  env:
-    RAILS_ENV: test
-  plugins:
-    docker-compose#v2.5.1:
-      run: app
-      config: docker-compose.yml
-  parallelism: 20
-  agents:
-    queue: $BUILDKITE_AGENT_META_DATA_QUEUE
+steps:
+  - name: ":rubocop:"
+    command: "scripts/ci/rubocop.sh"
+    artifact_paths:
+     - "log/**/*"
+    env:
+      RAILS_ENV: test
+    plugins:
+      docker-compose#v2.5.1:
+        run: app
+        config: docker-compose.yml
+    agents:
+      queue: $BUILDKITE_AGENT_META_DATA_QUEUE
+
+  - wait
+
+  - name: ":rspec:"
+    command: "scripts/ci/parallel_specs.sh"
+    artifact_paths:
+     - "log/**/*"
+     - "tmp/capybara/**/*"
+    env:
+      RAILS_ENV: test
+    plugins:
+      docker-compose#v2.5.1:
+        run: app
+        config: docker-compose.yml
+    parallelism: 20
+    agents:
+      queue: $BUILDKITE_AGENT_META_DATA_QUEUE
