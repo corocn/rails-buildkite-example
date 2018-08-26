@@ -1,24 +1,49 @@
-# README
+# Rails Buildkite Example
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Add to Buildkite](https://buildkite.com/button.svg)](https://buildkite.com/new)
 
-Things you may want to cover:
+This is a parallel testing example with Rails and RSpec on [Buildkite](https://buildkite.com/).
 
-* Ruby version
+Buildkite provides some simple examples.
 
-* System dependencies
+ * https://github.com/buildkite/example-pipelines
+ * https://github.com/buildkite/rails-docker-parallel-example
 
-* Configuration
+Those don't have e2e testings. This example has e2e testing using capybara on chromedriver and some lintings.
+You can check screenshot on Buildkite's build log with capybara-inline-screenshot.
 
-* Database creation
+Enjoy Buildkite!
 
-* Database initialization
+# Examples
 
-* How to run the test suite
+ * Rspec
+   * 20 Parallel execution (e2e testing: 1, linting: 2, general rspec tests: 17)
+   * [knapsack](https://github.com/ArturT/knapsack)
+   * [capybara-inline-screenshot](https://github.com/buildkite/capybara-inline-screenshot)
+ * Rubocop
+ * ESlint
+ 
+# Usage
 
-* Services (job queues, cache servers, search engines, etc.)
+ * Highly recommended to use [elastic-ci-stack-for-aws](https://github.com/buildkite/elastic-ci-stack-for-aws).
+ * If you check capybara-inline-screenshot ...
+   * Fork this repos
+   * Uncomment a line in spec/features/first_feature_spec.rb
+   * Run test on Buildkite
+  
+# Screenshot
 
-* Deployment instructions
+![buildkite-jobs](screenshots/buildkite-jobs.png)
 
-* ...
+![capybara-inline-screenshot](screenshots/capybara-inline-screenshot.png)
+
+# Environments
+
+ * Docker
+ * Ruby 2.5.1
+ * Rails 5.2.1 + Webpacker + Vue
+ * Node 8.x
+
+# License
+
+MIT
