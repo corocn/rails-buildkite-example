@@ -1,0 +1,48 @@
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - 'bin/**/*'
+    - 'db/migrate/**/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*.rb
+    - lib/tasks/**/*.rake
+    - spec/**/*.rb
+    - '**/Gemfile'
+
+Metrics/LineLength:
+  Max: 150
+  AllowURI: true
+    - http
+    - https
+  Exclude:
+    - config/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - '**/Gemfile'
+    - '**/Rakefile'
+
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 19
+
+Metrics/AbcSize:
+  Max: 25
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+Style/FormatStringToken:
+  Enabled: false
