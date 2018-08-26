@@ -4,6 +4,8 @@ MAINTAINER corocn <crsk.plmzh@gmail.com>
 
 EXPOSE 5000
 
+USER root
+
 # Add the wait-for-it.sh script for waiting on dependent containers
 RUN curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /usr/local/bin/wait-for-it.sh \
     && chmod +x /usr/local/bin/wait-for-it.sh
