@@ -17,19 +17,16 @@ Enjoy Buildkite!
 # Examples
 
  * Rspec
-   * 20 Parallel execution (e2e testing: 1, linting: 2, general rspec tests: 17)
-   * [knapsack](https://github.com/ArturT/knapsack)
+   * 20 parallels execution (E2E testing: 1, linting: 2, general rspec tests: 20)
+   * Test splitting with [knapsack](https://github.com/ArturT/knapsack)
    * [capybara-inline-screenshot](https://github.com/buildkite/capybara-inline-screenshot)
  * Rubocop
  * ESlint
  
 # Usage
 
- * Highly recommended to use [elastic-ci-stack-for-aws](https://github.com/buildkite/elastic-ci-stack-for-aws).
- * If you check capybara-inline-screenshot ...
-   * Fork this repos
-   * Uncomment a line in spec/features/first_feature_spec.rb
-   * Run test on Buildkite
+ * Highly recommended to use [elastic-ci-stack-for-aws](https://github.com/buildkite/elastic-ci-stack-for-aws). Launch stack and build it manually.
+ * You can try capybara-inline-screenshot with using a branch: https://github.com/corocn/rails-buildkite-example/tree/capybara-failed. E2E testing always failed in this branch, and screenshot will be uploaded.
   
 # Screenshot
 
@@ -39,7 +36,7 @@ Enjoy Buildkite!
 
 # Environments
 
- * Docker
+ * Docker + Docker Compose
  * Ruby 2.5.1
  * Rails 5.2.1 + Webpacker + Vue
  * Node 8.x
